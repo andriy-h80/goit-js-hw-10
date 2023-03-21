@@ -1,5 +1,5 @@
-import { name, capital, population, flags, languages } from './js/fetchCountries';
-import throttle from 'lodash.debounce';
+import { fetchCountries } from './js/fetchCountries';
+import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
 import './css/styles.css';
 
@@ -10,17 +10,21 @@ const refs = {
     countryInfo: document.querySelector('.country-info'),
 };
 
-refs.input.addEventListener('input', _.debounce((fetchCountries), DEBOUNCE_DELAY));
+refs.input.addEventListener('input', debounce(fetchCountries, DEBOUNCE_DELAY));
+document.body.style.backgroundColor = 'lightyellow';
 
 
 
 
 
 
-createPromise(position, delay)
-    .then(({ position, delay }) => {
-      Notiflix.Notify.success("Too many matches found. Please enter a more specific name.");
-    })
-    .catch(({ position, delay }) => {
-      Notiflix.Notify.failure("Oops, there is no country with that name");
-    });
+
+
+
+// createPromise(position, delay)
+//     .then(({ position, delay }) => {
+//       Notiflix.Notify.success("Too many matches found. Please enter a more specific name.");
+//     })
+//     .catch(({ position, delay }) => {
+//       Notiflix.Notify.failure("Oops, there is no country with that name");
+//     });
